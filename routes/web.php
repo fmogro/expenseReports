@@ -16,3 +16,4 @@ Route::get('/', 'HomeController@index');
 Route::get('/dashboard', 'DashboardController@index');
 
 Route::resource('/expense-reports', 'ExpenseReportController');
+Route::get('/expense-reports/{id}/confirmDelete','ExpenseReportController@confirmDelete');

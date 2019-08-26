@@ -40,7 +40,7 @@ class ExpenseReportController extends Controller
         $report = new ExpenseReport();
         $report->title = $request->get('title');
         $report->save();
-        return redirect('/expense-reports');
+        return redirect('/expense-reports')->with('status','Created =D');
     }
 
     /**
@@ -78,7 +78,7 @@ class ExpenseReportController extends Controller
         $report = ExpenseReport::findOrFail($id);
         $report->title = $request->get('title');
         $report->save();
-        return redirect('/expense-reports');
+        return redirect('/expense-reports')->with('status','Updated =)');
     }
 
     /**
@@ -89,6 +89,13 @@ class ExpenseReportController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $report = ExpenseReport::findOrFail($id);
+        $report->delete();
+        return redirect('/expense-reports')->with('status','Deleted =(');
     }
+
+    public function confirmDelete($id){
+        return view('expenseReport.confirmDelete',['id'=>$id]);
+    }
+
 }

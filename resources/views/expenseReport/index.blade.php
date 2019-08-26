@@ -10,6 +10,7 @@
         <a class="btn btn-primary" href="/expense-reports/create">Create a new Report</a>
     </div>
 </div>
+{{Session::get('status')}}
 <div class="row">
     <div class="col">
             <table class="table">
@@ -17,7 +18,7 @@
                     <tr>
                         <td>{{ $expenseReport->title }}</td>
                         <td> <a href="/expense-reports/{{ $expenseReport->id }}/edit" class="btn btn-primary">Edit</a> </td>
-                        <td> <a href="/expense-reports/{{ $expenseReport->id }}/delete" class="btn btn-danger">Delete</a> </td>
+                        <td> <a href="/expense-reports/{{ $expenseReport->id }}/confirmDelete" class="btn btn-danger">Delete</a> </td>
                     </tr>
                 @endforeach
            </table>
