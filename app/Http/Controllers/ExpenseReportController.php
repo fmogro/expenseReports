@@ -45,7 +45,7 @@ class ExpenseReportController extends Controller
         $report = new ExpenseReport();
         $report->title = $request->get('title');
         $report->save();
-        return redirect('/expense-reports')->with('status','Created =D');
+        return redirect('/expense-reports');
     }
 
     /**
@@ -54,11 +54,9 @@ class ExpenseReportController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(ExpenseReport $expenseReport)
     {
-        //
-        $report = ExpenseReport::findOrFail($id);
-        return view('expenseReport.view',['report'=>$report]);
+        return view('expenseReport.view',['report'=>$expenseReport]);
     }
 
     /**
@@ -67,11 +65,9 @@ class ExpenseReportController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(ExpenseReport $expenseReport)
     {
-
-        $report = ExpenseReport::findOrFail($id);
-        return view('expenseReport.edit',['report'=>$report]);
+        return view('expenseReport.edit',['report'=>$expenseReport]);
     }
 
     /**
@@ -90,7 +86,7 @@ class ExpenseReportController extends Controller
         $report = ExpenseReport::findOrFail($id);
         $report->title = $request->get('title');
         $report->save();
-        return redirect('/expense-reports')->with('status','Updated =)');
+        return redirect('/expense-reports');
     }
 
     /**
@@ -103,11 +99,18 @@ class ExpenseReportController extends Controller
     {
         $report = ExpenseReport::findOrFail($id);
         $report->delete();
-        return redirect('/expense-reports')->with('status','Deleted =(');
+        return redirect('/expense-reports');
     }
 
+
+    /**
+     * Return View for delete record.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function confirmDelete($id){
         return view('expenseReport.confirmDelete',['id'=>$id]);
     }
-
+    
 }

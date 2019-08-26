@@ -2,7 +2,7 @@
 @section('content')
 <div class="row">
     <div class="col">
-        <h1>View Report #{{$report->id}} </h1>
+        <h1>View Report {{$report->id}} </h1>
     </div>
 </div>
 <div class="row">
@@ -13,6 +13,7 @@
 <div class="row">
     <div class="col">
         <h1>{{$report->title}}</h1>
+        <h3>Details...</h3>
     </div>
 </div>
 @endsection
